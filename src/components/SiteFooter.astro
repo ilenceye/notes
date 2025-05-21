@@ -1,0 +1,44 @@
+---
+interface Props {
+  className?: string;
+}
+
+const year = new Date().getFullYear();
+
+const links = [
+  {
+    title: "Ilence Ye's Notes",
+    url: "/",
+  },
+  {
+    title: "Github",
+    url: "https://github.com/ilenceye",
+  },
+];
+---
+
+<footer
+  class="container bg-black text-netural-1 py-4 text-sm space-y-4 sm:rounded sm:my-4"
+>
+  <div class="flex justify-end">
+    <a href="#" title="Back to top">↑</a>
+  </div>
+  <hr class="opacity-60" />
+  <div
+    class="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center"
+  >
+    <ul class="flex flex-col gap-2 sm:flex-row sm:gap-4">
+      {
+        links.map(({ title, url }) => (
+          <li>
+            <a href={url}>{title}</a>
+          </li>
+        ))
+      }
+    </ul>
+    <hr class="opacity-60 sm:hidden" />
+    <div>
+      <span>{year} &copy Ilence Ye</span>
+    </div>
+  </div>
+</footer>

@@ -3,6 +3,7 @@ import type { GetStaticPaths } from "astro";
 import { getNoteList } from "../utils/notes";
 import RootLayout from "../layouts/RootLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 
 export const getStaticPaths = (async () => {
   const notes = await getNoteList();
@@ -32,6 +33,7 @@ const { note } = Astro.props;
         <Fragment set:html={note.html} />
       </article>
     </main>
+    <SiteFooter />
   </div>
 </RootLayout>
 
