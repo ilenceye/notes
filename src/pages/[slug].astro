@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import { getNoteList } from "../utils/notes";
 import RootLayout from "../layouts/RootLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
 
 export const getStaticPaths = (async () => {
   const notes = await getNoteList();
@@ -17,6 +18,7 @@ const { note } = Astro.props;
 
 <RootLayout title={`${note.title} | Ilence Ye`}>
   <div class="min-h-screen flex flex-col">
+    <SiteHeader />
     <main class="flex-1 container">
       <section class="mt-4 py-4 space-y-4">
         <h2 class="text-2xl font-bold">
