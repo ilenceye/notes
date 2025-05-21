@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+@config "../../tailwind.config.mjs";
+
+:root {
+  --netural-1: #ccc;
+  --netural-2: #aaa;
+  --border: 240 5.9% 90%;
+  --border-hover: 240 5.9% 86%;
+  --accent: #21759b;
+  --accent-hover: #0f3647;
+}
+
+@font-face {
+  font-family: "Monospaced Number";
+  src: local("Menlo"), local("Consolas"), local("Monaco"), local("Roboto Mono");
+  unicode-range: U+30-39;
+}
+
+html {
+  font-family: "Monospaced Number", system-ui, sans-serif;
+}
+
+code {
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
+}
