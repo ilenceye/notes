@@ -2,38 +2,28 @@
 import { getNoteGroupByMonth } from "../utils/notes";
 
 const noteGroups = await getNoteGroupByMonth();
-
-const latestYear = noteGroups[0].year;
-const latestMonth = noteGroups[0].month;
-
-// Display year only if the post was created in the latest month or December.
-const shouldDisplayYear = (year: string, month: string) =>
-  (year === latestYear && month === latestMonth) || parseInt(month) === 12;
 ---
 
-{
-  noteGroups.map(({ year, month, notes }) => (
-    <section>
-      <h2 class="flex items-center font-bold">
-        {shouldDisplayYear(year, month) ? (
-          <span>{year}</span>
-        ) : (
-          <hr class="w-full mr-4 border-dashed border-hover" />
-        )}
-        <span class="ml-auto">{month}</span>
-      </h2>
-      <ul class="mt-3 space-y-3">
-        {notes.map(({ slug, title, createdAt, day }) => (
-          <li>
-            <a href={`/${slug}`} class="flex justify-between items-center">
-              <p class="truncate">{title}</p>
-              <time class="text-netural-1" datetime={createdAt}>
-                {day}
-              </time>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </section>
-  ))
-}
+<div class="space-y-8">
+  {
+    noteGroups.map(({ year, month, notes }) => (
+      <section>
+        <h2 class="font-bold">
+          {year}.{month}
+        </h2>
+        <ul class="mt-3 space-y-3">
+          {notes.map(({ slug, title, createdAt, day }) => (
+            <li>
+              <a href={`/${slug}`} class="flex justify-between items-center">
+                <p class="truncate">{title}</p>
+                <time class="text-netural-1" datetime={createdAt}>
+                  {day}
+                </time>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</div>
