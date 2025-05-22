@@ -1,14 +1,40 @@
 @import "tailwindcss";
 
-@config "../../tailwind.config.mjs";
-
 :root {
   --netural-1: #ccc;
   --netural-2: #aaa;
-  --border: 240 5.9% 90%;
-  --border-hover: 240 5.9% 86%;
+  --border: hsl(240 5.9% 90%);
+  --border-hover: hsl(240 5.9% 86%);
   --accent: #21759b;
   --accent-hover: #0f3647;
+}
+
+@theme inline {
+  --color-netural-1: var(--netural-1);
+  --color-netural-2: var(--netural-2);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--border, currentColor);
+  }
+}
+
+@source not inline("container");
+
+@layer utilities {
+  .container {
+    width: 100%;
+    max-width: 684px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
 }
 
 @font-face {
